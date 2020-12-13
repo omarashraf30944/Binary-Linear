@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+void print(int arr[], int n)
+{
+    cout <<"[ ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout <<" ]"<< endl;
+
+}
+
+void LinearSearch(int arr[],int s, int element){
+    int key = 0 ;
+    int index;
+    for(int i = 0; i < s;i++){
+        if( arr[i] == element ){
+            key = arr[i];
+            index = i;
+        }
+    }
+            
+            cout<<"The element is:"<<key<<" and it is at index:"<<index<<endl;
+}
+
+int BinarySearch(int arr[], int l, int h, int element){
+    while(l <= h){
+        int m = (l + h) / 2 ;
+        
+        if(arr[m] == element)
+            return m;
+        if(arr[m] > element)
+            h = m - 1;
+        else
+            l = m + 1;
+        
+    }
+return -1;
+}
+
+
+int main(){
+    
+    int arr[] = {100,200,300,400,500,600};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int num;
+    cout << "Enter an Integer :";
+    cin >> num;
+
+    int result = BinarySearch(arr, 0, n - 1, num);
+    if(result != -1)
+        cout<<arr[result]<<" was found at index : "<<result<<endl;
+    else
+        cout<<"Number was not found "<<endl;
+   return 0;
+}
